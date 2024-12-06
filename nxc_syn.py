@@ -3,15 +3,16 @@ import subprocess
 # User credentials
 username = 'bob'
 password = '!P@$$W0rD!123'
+target_ip = '10.10.51.100'
 
 # Define the commands with placeholders for username and password
 commands = [
-    f"nxc smb 10.10.51.100 -u '{username}' -p '{password}' --shares",
-    f"nxc rdp 10.10.51.100 -u '{username}' -p '{password}'",
-    f"nxc winrm 10.10.51.100 -u '{username}' -p '{password}'"
+    f"nxc smb {target_ip} -u '{username}' -p '{password}' --shares",
+    f"nxc rdp {target_ip} -u '{username}' -p '{password}'",
+    f"nxc winrm {target_ip} -u '{username}' -p '{password}'"
 ]
 
-# Execute each command
+# Execute each command and check for open ports
 for command in commands:
     try:
         print(f"Executing: {command}")
